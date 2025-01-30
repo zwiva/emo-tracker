@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="display: flex; justify-content: space-between; flex-direction: column;">
+
+  <nav style="display: flex; justify-content: space-around; background-color: #e97ae0; line-height: 2em; color: white;">
+    <div id="today"></div>
+    <div id="now"></div>
+  </nav>
+
+  <main style="display: flex; justify-content: center; flex-direction: column; gap: 1em;">
+
+    <div style="text-align: center;">
+      <h1>EMO-TRACKER</h1>
+    </div>
+
+    <div style="display: flex; justify-content: center;" id="setData">
+      <div id="form" style="display: flex; flex-direction: column; width: 100%; max-width: 300px; gap: 0.5em;">
+
+        <label for="lastDate" style="display: flex; justify-content: space-between;">Last cycle duration
+          <div style="display: flex; flex-direction: column; text-align: center;">
+            <input type="text" name="lastCycle" id="lastCycle" placeholder="DD">
+            <span> (range: 25 - 40)</span>
+          </div>
+        </label>
+
+        <label for="lastDate" style="display: flex; justify-content: space-between;">Last start date
+          <div style="display: flex; flex-direction: column;">
+            <input type="text" name="lastDate" id="lastDate" placeholder="DD-MM">
+          </div>
+        </label>
+
+        <button onclick="setDate()"
+          style="background-color: #e97ae0; border: none; padding: 0.75em; border-radius: 2em; color: white; cursor: pointer;">Go</button>
+      </div>
+    </div>
+
+    <div id="showData" style="display: flex; justify-content: center; width: 90%; align-self: center;">
+
+
+
+      <div
+        style="align-content: center; height: 1.25em; width: 25%; background-color: white; border: 1px solid #ff00f2; text-align: center;">
+    
+      </div>
+
+      <div
+        style="align-content: center; height: 1.25em; width: 25%; background-color: white; border: 1px solid #ff00f2; text-align: center;">
+    
+      </div>
+      <div
+        style="align-content: center; height: 1.25em; width: 25%; background-color: white; border: 1px solid #ff00f2; text-align: center;">
+
+      </div>
+      <div
+        style="align-content: center; height: 1.25em; width: 25%; background-color: white; border: 1px solid #ff00f2; text-align: center;">
+ 
+      </div>
+
+
+
+    </div>
+
+  </main>
+  <footer></footer>
+
+</body>
+
+</html>
