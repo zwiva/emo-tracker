@@ -1,0 +1,22 @@
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.navigation__section {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--color-pink);
+  line-height: 2em;
+  color: white;
+}
+
+.form__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  gap: 0.5em;
+}
