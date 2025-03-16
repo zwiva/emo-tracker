@@ -1,14 +1,14 @@
 
-const Navbar = () => {
-  
+const Navbar = ({ today }) => {
 
   return (
-    <nav className="navigation__section">
-      <div id="today"></div>
-      <h2>
+    <nav className="navigation__section p-05">
+      <h3>
         Mood-Detector
-      </h2>
-      <div id="now"></div>
+      </h3>
+      <div>
+        <span className="text-navigation">Today: {today}</span>
+      </div>
     </nav>
   )
 

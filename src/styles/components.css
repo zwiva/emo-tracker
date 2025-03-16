@@ -7,3 +7,21 @@
   cursor: pointer;
 }
 
+.input {
+  width: 10em;
+  text-align: center;
+}
+
+.form__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  gap: 0.5em;
+}
+
+.text-navigation {
+  font-size: 0.8em;
+  word-break: keep-all
+}

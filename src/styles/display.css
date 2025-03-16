@@ -3,6 +3,8 @@
   justify-content: center;
   flex-direction: column;
   gap: 1em;
+  width: 80%;
+  align-self: center;
 }
 
 .navigation__section {
@@ -13,10 +15,14 @@
   color: white;
 }
 
-.form__body {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 300px;
-  gap: 0.5em;
+@media (min-width:480px) {
+  .main {
+    width: 90%;
+  }
+}
+
+@media (min-width:1020px) {
+  .main {
+    width: 100%;
+  }
 }

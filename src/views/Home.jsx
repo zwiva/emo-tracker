@@ -1,18 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from 'react';
 
-const Home = () => {
-  const [date, setDate] = useState(new Date());
+const Home = ({ today, now }) => {
+  console.log('today', today);
+  console.log('now', now);
+
   const [data, setData] = useState("");
-
-  // **** navbar ****
-  const [today, setToday] = useState("");
-  const [now, setNow] = useState("");
-
-  useEffect(() => {
-    console.log('date', date);
-    setToday(date.toLocaleDateString("es-ES"));
-    setNow(date.toLocaleTimeString("es-ES"));
-  }, []);
 
   // **** form ****
   const setDataForm = () => {
@@ -27,39 +19,33 @@ const Home = () => {
   return (
     <>
       <div className="text-center">
-        <h1>EMO-TRACKER</h1>
+        <h1>MOOD-DETECTOR</h1>
       </div>
-
-      <div className="flex-center flex-column text-pink">
-        <p>Today: {today}</p>
-        <p>Now: {now} </p>
-      </div>
-
-      <div className="flex-center" id="setData">
-        <div id="form" className="form__body">
-
-          <label htmlFor="lastDate" className="flex-between wrap">
-            <span className="mr-025">
+      <div className="flex-center" id="setData" style={{ alignItems: 'center' }}>
+        <div id="form" className="form__body m-1 flex-center text-center">
+          <label htmlFor="lastDate" className="flex-center wrap">
+            <span className="mr-05">
               Last cycle duration
             </span>
             <div className="flex-column">
-              <input type="text" name="lastCycle" id="lastCycle" placeholder="DD" />
-              <span> (range: ex: 25)</span>
+              <input type="text" name="lastCycle" id="lastCycle" placeholder="DD" className="input" />
             </div>
           </label>
-
-          <label htmlFor="lastDate" className="flex-between wrap">
-            <span>
+          <label htmlFor="lastDate" className="flex-center wrap">
+            <span className="mr-05">
               Last start date
             </span>
             <div className="flex-column">
-              <input type="date" name="lastDate" id="lastDate" placeholder="DD-MM" />
+              <input type="date" name="lastDate" id="lastDate" placeholder="DD-MM" className="input" />
             </div>
           </label>
-
-          <button onClick={setDataForm} className="button">Check</button>
         </div>
-      </div>
+        <button onClick={setDataForm} className="button" style={{ borderRadius: '50%', padding: '1.75em 1em' }} >
+          <span>
+            Check
+          </span>
+        </button>
+      </div >
 
       <div id="showData" className="flex-center w-90 mt-1">
         <p>{data}</p>
