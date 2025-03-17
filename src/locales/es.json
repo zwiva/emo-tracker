@@ -6,6 +6,8 @@
   "check": "Revisar",
   "footerMsg": "Cuál es tu ánimo?",
   "today": "Hoy es:",
-  "missingData": "Ingrese datos válidos."
-
+  "missingData": "Ingrese datos válidos.",
+  "selected": "Seleccionado",
+  "duration": "Duración",
+  "date": "Fecha"
 }

@@ -13,6 +13,7 @@ const Home = ({ date }) => {
   const [currentYear, setCurrentYear] = useState('')
 
   const [estimatedCycleDuration, setEstimatedCycleDuration] = useState('')
+  const [startDate, setStartDate] = useState("")
 
   const [lastCycleDay, setLastCycleDay] = useState('')
   const [lastCycleMonth, setLastCycleMonth] = useState('')
@@ -74,13 +75,12 @@ const Home = ({ date }) => {
     }
 
     setEstimatedCycleDuration(lastCycleDuration)
-    const [year, month, day] = lastStartDate.split('-');
+    setStartDate(lastStartDate)
 
+    const [year, month, day] = lastStartDate.split('-');
     setLastCycleDay(day)
     setLastCycleMonth(month)
     setLastCycleYear(year)
-
-    setCycleData(`Your selection: Last Cycle ${lastCycleDuration} - Last Start Date ${lastStartDate}`);
   };
 
   return (
@@ -94,7 +94,7 @@ const Home = ({ date }) => {
             <span className="mr-05">
               {t("lastCycleDuration")}
             </span>
-            <div className="flex-column">
+            <div className="flex column">
               <input type="text" name="lastCycle" id="lastCycle" placeholder="DD" className="input" />
             </div>
           </label>
@@ -102,7 +102,7 @@ const Home = ({ date }) => {
             <span className="mr-05">
               {t("lastStartDate")}
             </span>
-            <div className="flex-column">
+            <div className="flex column">
               <input type="date" name="lastDate" id="lastDate" placeholder="DD-MM" className="input" />
             </div>
           </label>
@@ -115,7 +115,17 @@ const Home = ({ date }) => {
       </div >
 
       <div className="flex-center w-90 mt-1">
-        <p>{cycleData}</p>
+        {estimatedCycleDuration && startDate &&
+          <div className="flex-center self column text-start">
+            {/* <h4 className=''>
+              {t("selected")}:
+            </h4> */}
+            <ul>
+              <li>{t("duration")} {estimatedCycleDuration}</li>
+              <li>{t("date")} {startDate}</li>
+            </ul>
+          </div>
+        }
       </div>
 
       <div className="flex-center w-90 mt-1">

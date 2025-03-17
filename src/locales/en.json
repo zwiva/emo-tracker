@@ -6,5 +6,8 @@
   "check": "Check",
   "footerMsg": "What is your mood?",
   "today": "Today is:",
-  "missingData": "Insert valid data."
+  "missingData": "Insert valid data.",
+  "selected": "Selected",
+  "duration": "Duration",
+  "date": "Date"
 }

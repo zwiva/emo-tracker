@@ -13,7 +13,7 @@ const Navbar = ({ today }) => {
     <nav className="navigation__section">
       <div className="navigation__section--body m-05 g-05">
 
-        <div className="w-100 flex-between wrap">
+        <div className="w-100 flex between wrap">
           <h3>
             WomanMoodDetector
           </h3>

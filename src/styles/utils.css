@@ -11,15 +11,16 @@
   align-self: center;
 }
 
-.flex-between {
-  display: flex;
+.between {
   justify-content: space-between;
 }
 
-.flex-column {
-  display: flex;
+.start {
+  justify-content: flex-start;
+}
+
+.column {
   flex-direction: column;
-  text-align: center;
 }
 
 .wrap {
@@ -34,6 +35,10 @@
 
 .text-center {
   text-align: center;
+}
+
+.text-start {
+  text-align: start;
 }
 
 /* flex - alignments */
