@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Bar from '../components/Bar';
 import Line from '../components/Line';
+import { useTranslation } from 'react-i18next';
 
 const Home = ({ date }) => {
   // console.log('--- START VIEW ---', date);
-
+  const { t, i18n } = useTranslation();
   const [cycleData, setCycleData] = useState("");
 
   const [currentDay, setCurrentDay] = useState('')
@@ -85,13 +86,13 @@ const Home = ({ date }) => {
   return (
     <>
       <div className="text-center">
-        <h1>MOOD-DETECTOR</h1>
+        <h1>WomanMoodDetector</h1>
       </div>
       <div className="flex-center" id="setData" style={{ alignItems: 'center' }}>
         <div id="form" className="form__body m-1 flex-center text-center">
           <label htmlFor="lastDate" className="flex-center wrap">
             <span className="mr-05">
-              Last cycle duration
+              {t("lastCycleDuration")}
             </span>
             <div className="flex-column">
               <input type="text" name="lastCycle" id="lastCycle" placeholder="DD" className="input" />
@@ -99,7 +100,7 @@ const Home = ({ date }) => {
           </label>
           <label htmlFor="lastDate" className="flex-center wrap">
             <span className="mr-05">
-              Last start date
+              {t("lastStartDate")}
             </span>
             <div className="flex-column">
               <input type="date" name="lastDate" id="lastDate" placeholder="DD-MM" className="input" />
@@ -108,7 +109,7 @@ const Home = ({ date }) => {
         </div>
         <button onClick={getDataForm} className="button" style={{ borderRadius: '50%', padding: '1.75em 1em' }} >
           <span>
-            Check
+            <p>{t("check")}</p>
           </span>
         </button>
       </div >

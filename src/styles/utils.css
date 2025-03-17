@@ -141,16 +141,26 @@
   margin: 3em;
 }
 
-.p-05{
+.p-05 {
   padding: 0.5em;
 }
-.p-1{
+
+.p-1 {
   padding: 1em;
 }
-.p-15{
+
+.p-15 {
   padding: 1.5em;
 }
 
 .wrap {
   flex-wrap: wrap;
+}
+
+.g-05 {
+  gap: 0.5em
+}
+
+.g-1 {
+  gap: 1em
 }
