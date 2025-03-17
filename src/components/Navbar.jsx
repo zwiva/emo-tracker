@@ -15,7 +15,7 @@ const Navbar = ({ today }) => {
         WomanMoodDetector
       </h3>
       <div className="flex g-05">
-        <span className="text-navigation">Today: {today}</span>
+        <span className="text-navigation">{t("today")} {today}</span>
         {/* <h1>{t("welcome")}</h1> */}
         <button onClick={() => changeLanguage("en")} className="p-05" >En</button>
         <button onClick={() => changeLanguage("es")} className="p-05" >Es</button>

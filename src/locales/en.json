@@ -4,5 +4,6 @@
   "lastCycleDuration": "Last cycle duration",
   "lastStartDate": "Last period start",
   "check": "Check",
-  "footerMsg": "What is your mood?"
+  "footerMsg": "What is your mood?",
+  "today": "Today is:"
 }
