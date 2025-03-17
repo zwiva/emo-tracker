@@ -86,7 +86,7 @@ const Home = ({ date }) => {
   return (
     <>
       <div className="text-center">
-        <h1>WomanMoodDetector</h1>
+        <h1>Woman <span className='text-pink'>Mood</span> Detector</h1>
       </div>
       <div className="flex-center" id="setData" style={{ alignItems: 'center' }}>
         <div id="form" className="form__body m-1 flex-center text-center">
