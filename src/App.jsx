@@ -13,7 +13,6 @@ function App() {
   const [now, setNow] = useState("");
 
   useEffect(() => {
-    console.log('date', date);
     setToday(date.toLocaleDateString("es-ES"));
     setNow(date.toLocaleTimeString("es-ES"));
   }, []);
@@ -22,7 +21,7 @@ function App() {
     <>
       <Navbar today={today} />
       <main className='main'>
-        <Home today={today} now={now} />
+        <Home date={today} />
       </main>
       <Footer />
     </>

@@ -1,19 +1,85 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Bar from '../components/Bar';
+import Line from '../components/Line';
 
-const Home = ({ today, now }) => {
-  console.log('today', today);
-  console.log('now', now);
+const Home = ({ date }) => {
+  // console.log('--- START VIEW ---', date);
 
-  const [data, setData] = useState("");
+  const [cycleData, setCycleData] = useState("");
 
-  // **** form ****
-  const setDataForm = () => {
-    const lastCycle = document.getElementById("lastCycle").value;
-    console.log("lastCycle --->", lastCycle);
+  const [currentDay, setCurrentDay] = useState('')
+  const [currentMonth, setCurrentMonth] = useState('')
+  const [currentYear, setCurrentYear] = useState('')
+
+  const [estimatedCycleDuration, setEstimatedCycleDuration] = useState('')
+
+  const [lastCycleDay, setLastCycleDay] = useState('')
+  const [lastCycleMonth, setLastCycleMonth] = useState('')
+  const [lastCycleYear, setLastCycleYear] = useState('')
+
+  const [showGraph, setShowGraph] = useState(false)
+  const [topValues, setTopValues] = useState([])
+  const [bottomValues, setBottomValues] = useState([])
+  const [position, setPosition] = useState(0)
+
+  useEffect(() => {
+    const [day, month, year] = date.split('/');
+    setCurrentDay(day);
+    setCurrentMonth(month);
+    setCurrentYear(year);
+  }, [date]);
+
+  const makeCalculations = () => {
+    setShowGraph(true)
+    // console.log('dia ciclo ---> ', lastCycleDay);
+    // console.log('mes ciclo ---> ', lastCycleMonth);
+    // console.log('ano ciclo ---> ', lastCycleYear);
+    const quarter = estimatedCycleDuration / 4
+    const fir = quarter
+    const sec = quarter * 2
+    const thr = quarter * 3
+
+    console.log('lastCycleDay', lastCycleDay);
+
+    setTopValues([0, fir, sec, thr, estimatedCycleDuration]) // dias del ciclo
+    setBottomValues([ // consider 28-29-30-31 months
+      (Number(lastCycleDay)),
+      (Number(lastCycleDay) + fir),
+      (Number(lastCycleDay) + sec),
+      (Number(lastCycleDay) + thr),
+      (Number(lastCycleDay) + Number(estimatedCycleDuration))]) // dias del mes
+
+    setPosition(40) // min: 1 max: 80 (sacar proporcion)
+  }
+
+  useEffect(() => {
+    if (lastCycleDay && lastCycleMonth && lastCycleYear) {
+      makeCalculations();
+    }
+  }, [lastCycleDay, lastCycleMonth, lastCycleYear]);
+
+
+  const getDataForm = () => {
+    // console.log('dia ---> ', currentDay);
+    // console.log('mes ---> ', currentMonth);
+    // console.log('ano ---> ', currentYear);
+
+    const lastCycleDuration = document.getElementById("lastCycle").value;
     const lastStartDate = document.getElementById("lastDate").value;
-    console.log("lastStartDate --->", lastStartDate);
 
-    setData(`Last Cycle: ${lastCycle}, Last Start Date: ${lastStartDate}`);
+    if (!lastCycleDuration || !lastStartDate) {
+      alert('data required')
+      return
+    }
+
+    setEstimatedCycleDuration(lastCycleDuration)
+    const [year, month, day] = lastStartDate.split('-');
+
+    setLastCycleDay(day)
+    setLastCycleMonth(month)
+    setLastCycleYear(year)
+
+    setCycleData(`Your selection: Last Cycle ${lastCycleDuration} - Last Start Date ${lastStartDate}`);
   };
 
   return (
@@ -40,15 +106,21 @@ const Home = ({ today, now }) => {
             </div>
           </label>
         </div>
-        <button onClick={setDataForm} className="button" style={{ borderRadius: '50%', padding: '1.75em 1em' }} >
+        <button onClick={getDataForm} className="button" style={{ borderRadius: '50%', padding: '1.75em 1em' }} >
           <span>
             Check
           </span>
         </button>
       </div >
 
-      <div id="showData" className="flex-center w-90 mt-1">
-        <p>{data}</p>
+      <div className="flex-center w-90 mt-1">
+        <p>{cycleData}</p>
+      </div>
+
+      <div className="flex-center w-90 mt-1">
+        {showGraph &&
+          <Line topValues={topValues} bottomValues={bottomValues} position={position} />
+        }
       </div>
     </>
 

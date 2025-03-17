@@ -1,6 +1,4 @@
-
 const Navbar = ({ today }) => {
-
   return (
     <nav className="navigation__section p-05">
       <h3>
@@ -11,7 +9,6 @@ const Navbar = ({ today }) => {
       </div>
     </nav>
   )
-
 }
 
 export default Navbar;

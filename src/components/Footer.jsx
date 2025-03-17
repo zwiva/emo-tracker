@@ -1,6 +1,4 @@
-
 const Footer = () => {
-
   return (
     <footer className="navigation__section text-navigation">
       <p className="m-05">
@@ -8,7 +6,6 @@ const Footer = () => {
       </p>
     </footer>
   )
-
 }
 
 export default Footer;
