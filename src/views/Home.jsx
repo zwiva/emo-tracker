@@ -69,7 +69,7 @@ const Home = ({ date }) => {
     const lastStartDate = document.getElementById("lastDate").value;
 
     if (!lastCycleDuration || !lastStartDate) {
-      alert('data required')
+      alert(`${t("missingData")}`)
       return
     }
 
@@ -107,7 +107,7 @@ const Home = ({ date }) => {
             </div>
           </label>
         </div>
-        <button onClick={getDataForm} className="button" style={{ borderRadius: '50%', padding: '1.75em 1em' }} >
+        <button onClick={getDataForm} className="button" style={{ borderRadius: '50%', padding: '2em 1.25em' }} >
           <span>
             <p>{t("check")}</p>
           </span>

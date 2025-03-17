@@ -7,14 +7,6 @@
   align-self: center;
 }
 
-.navigation__section {
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--color-pink);
-  line-height: 2em;
-  color: white;
-}
-
 @media (min-width:480px) {
   .main {
     width: 90%;

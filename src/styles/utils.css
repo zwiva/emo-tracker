@@ -1,8 +1,6 @@
 /* utils */
-.text-center {
-  text-align: center;
-}
 
+/* display */
 .flex {
   display: flex;
 }
@@ -24,9 +22,55 @@
   text-align: center;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+/* alignments */
+
+.text-center {
+  text-align: center;
+}
+
+/* flex - alignments */
+
+.align_c-center {
+  align-content: center;
+}
+
+.align_i-center {
+  align-items: center;
+}
+
+.align_s-center {
+  align-self: center;
+}
+
+.justify-c-center {
+  justify-content: center;
+}
+
+/* width */
+.w-100 {
+  width: 100%;
+}
+
 .w-90 {
   width: 90%;
   margin: 0 auto;
+}
+
+/* spacing */
+.g-05 {
+  gap: 0.5em
+}
+
+.g-1 {
+  gap: 1em
 }
 
 .mt-05 {
@@ -151,16 +195,4 @@
 
 .p-15 {
   padding: 1.5em;
-}
-
-.wrap {
-  flex-wrap: wrap;
-}
-
-.g-05 {
-  gap: 0.5em
-}
-
-.g-1 {
-  gap: 1em
 }

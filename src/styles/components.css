@@ -21,6 +21,22 @@
   gap: 0.5em;
 }
 
+.navigation__section {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-pink);
+  color: white;
+  width: 100%;
+  line-height: 2em;
+}
+
+.navigation__section--body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1080px;
+}
+
 .text-navigation {
   font-size: 0.8em;
   word-break: keep-all

@@ -5,6 +5,7 @@
   "lastStartDate": "Inicio último período",
   "check": "Revisar",
   "footerMsg": "Cuál es tu ánimo?",
-  "today": "Hoy es:"
+  "today": "Hoy es:",
+  "missingData": "Ingrese datos válidos."
 
 }

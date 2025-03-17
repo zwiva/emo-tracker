@@ -10,17 +10,23 @@ const Navbar = ({ today }) => {
   };
 
   return (
-    <nav className="navigation__section p-05">
-      <h3>
-        WomanMoodDetector
-      </h3>
-      <div className="flex g-05">
-        <span className="text-navigation">{t("today")} {today}</span>
-        {/* <h1>{t("welcome")}</h1> */}
-        <button onClick={() => changeLanguage("en")} className="p-05" >En</button>
-        <button onClick={() => changeLanguage("es")} className="p-05" >Es</button>
-      </div>
+    <nav className="navigation__section">
+      <div className="navigation__section--body m-05 g-05">
 
+        <div className="w-100 flex-between wrap">
+          <h3>
+            WomanMoodDetector
+          </h3>
+          <p className="text-navigation">{t("today")} {today}</p>
+        </div>
+
+        <div className="flex g-05 align_i-center">
+          {/* <h1>{t("welcome")}</h1> */}
+          <button onClick={() => changeLanguage("en")} className="p-05" style={{ maxHeight: '3em' }}>En</button>
+          <button onClick={() => changeLanguage("es")} className="p-05" style={{ maxHeight: '3em' }} >Es</button>
+        </div>
+
+      </div>
     </nav>
   )
 }
