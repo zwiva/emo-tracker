@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Bar from '../components/Bar';
 import Line from '../components/Line';
 import { useTranslation } from 'react-i18next';
 
-const Home = ({ date }) => {
-  // console.log('--- START VIEW ---', date);
+const Home = ({ today, todayFull }) => {
+  // console.log('--- START VIEW ---', todayFull);
   const { t, i18n } = useTranslation();
-  const [cycleData, setCycleData] = useState("");
+  // const [cycleData, setCycleData] = useState("");
 
   const [currentDay, setCurrentDay] = useState('')
-  const [currentMonth, setCurrentMonth] = useState('')
-  const [currentYear, setCurrentYear] = useState('')
+  // const [currentMonth, setCurrentMonth] = useState('')
+  // const [currentYear, setCurrentYear] = useState('')
 
-  const [estimatedCycleDuration, setEstimatedCycleDuration] = useState('')
+  const [estimatedCycleDuration, setEstimatedCycleDuration] = useState(0)
   const [startDate, setStartDate] = useState("")
 
   const [lastCycleDay, setLastCycleDay] = useState('')
@@ -25,47 +25,84 @@ const Home = ({ date }) => {
   const [position, setPosition] = useState(0)
 
   useEffect(() => {
-    const [day, month, year] = date.split('/');
+    const [day, month, year] = today.split('/');
     setCurrentDay(day);
-    setCurrentMonth(month);
-    setCurrentYear(year);
-  }, [date]);
+    // setCurrentMonth(month);
+    // setCurrentYear(year);
+  }, [today]);
 
-  const makeCalculations = () => {
-    setShowGraph(true)
-    // console.log('dia ciclo ---> ', lastCycleDay);
-    // console.log('mes ciclo ---> ', lastCycleMonth);
-    // console.log('ano ciclo ---> ', lastCycleYear);
+  const drawTopSection = () => {
     const quarter = estimatedCycleDuration / 4
-    const fir = quarter
+    const frs = quarter
     const sec = quarter * 2
     const thr = quarter * 3
-
-    console.log('lastCycleDay', lastCycleDay);
-
-    setTopValues([0, fir, sec, thr, estimatedCycleDuration]) // dias del ciclo
-    setBottomValues([ // consider 28-29-30-31 months
-      (Number(lastCycleDay)),
-      (Number(lastCycleDay) + fir),
-      (Number(lastCycleDay) + sec),
-      (Number(lastCycleDay) + thr),
-      (Number(lastCycleDay) + Number(estimatedCycleDuration))]) // dias del mes
-
-    setPosition(40) // min: 1 max: 80 (sacar proporcion)
+    setTopValues([0, frs, sec, thr, Number(estimatedCycleDuration)]) // dias del ciclo
+    return quarter
   }
+
+  const drawBottomSection = (quarter) => {
+    const allfirstQ = new Date(startDate);
+    allfirstQ.setDate(allfirstQ.getDate() + quarter);
+    const firstQ = allfirstQ.toISOString().split("T")[0];
+    // console.log('firstQ', firstQ);
+
+    const allSecondQ = new Date(startDate);
+    allSecondQ.setDate(allSecondQ.getDate() + (quarter * 2));
+    const secondQ = allSecondQ.toISOString().split("T")[0];
+    // console.log('secondQ', secondQ);
+
+    const allThirdQ = new Date(startDate);
+    allThirdQ.setDate(allThirdQ.getDate() + (quarter * 3));
+    const thirdQ = allThirdQ.toISOString().split("T")[0];
+    // console.log('thirdQ', thirdQ);
+
+    const allFourthQ = new Date(startDate);
+    allFourthQ.setDate(allFourthQ.getDate() + (quarter * 4));
+    const fourthQ = allFourthQ.toISOString().split("T")[0];
+    // console.log('fourthQ', fourthQ);
+
+    const bottomValues = [
+      (`${startDate.split('T')[0].split('-')[2]}.${startDate.split('T')[0].split('-')[1]}`),
+      (`${firstQ.split('-')[2]}.${firstQ.split('-')[1]}`),
+      (`${secondQ.split('-')[2]}.${secondQ.split('-')[1]}`),
+      (`${thirdQ.split('-')[2]}.${thirdQ.split('-')[1]}`),
+      (`${fourthQ.split('-')[2]}.${fourthQ.split('-')[1]}`)
+    ]
+    // console.log('bottomValues', bottomValues);
+    setBottomValues(bottomValues)
+  }
+
+  const drawToday = () => {
+    console.log('----------------hoy---------------');
+    console.log('startDate', startDate);
+
+    const pos = lastCycleDay
+    const posFinal = lastCycleDay + 10
+
+    setPosition(posFinal) // min: 1 max: 80 (sacar proporcion)
+  }
+
+  // const drawGraph = () => {
+  //   const quarter = drawTopSection()
+  //   drawBottomSection(quarter)
+  //   drawToday()
+  //   setShowGraph(true)
+  // }
+
+  const drawGraph = useCallback(() => {
+    const quarter = drawTopSection();
+    drawBottomSection(quarter);
+    drawToday();
+    setShowGraph(true);
+  }, [drawTopSection, drawBottomSection, drawToday]);
 
   useEffect(() => {
     if (lastCycleDay && lastCycleMonth && lastCycleYear) {
-      makeCalculations();
+      drawGraph();
     }
   }, [lastCycleDay, lastCycleMonth, lastCycleYear]);
 
-
   const getDataForm = () => {
-    // console.log('dia ---> ', currentDay);
-    // console.log('mes ---> ', currentMonth);
-    // console.log('ano ---> ', currentYear);
-
     const lastCycleDuration = document.getElementById("lastCycle").value;
     const lastStartDate = document.getElementById("lastDate").value;
 
@@ -74,8 +111,11 @@ const Home = ({ date }) => {
       return
     }
 
+    const lastPeriod = new Date(lastStartDate);
+    const lastPeriodISO = lastPeriod.toISOString().split("T")[0] + "T00:00:00";
+
     setEstimatedCycleDuration(lastCycleDuration)
-    setStartDate(lastStartDate)
+    setStartDate(lastPeriodISO)
 
     const [year, month, day] = lastStartDate.split('-');
     setLastCycleDay(day)
@@ -95,7 +135,7 @@ const Home = ({ date }) => {
               {t("lastCycleDuration")}
             </span>
             <div className="flex column">
-              <input type="text" name="lastCycle" id="lastCycle" placeholder="DD" className="input" />
+              <input type="number" name="lastCycle" id="lastCycle" placeholder="DD" className="input" />
             </div>
           </label>
           <label htmlFor="lastDate" className="flex-center wrap">
@@ -113,20 +153,6 @@ const Home = ({ date }) => {
           </span>
         </button>
       </div >
-
-      <div className="flex-center w-90 mt-1">
-        {estimatedCycleDuration && startDate &&
-          <div className="flex-center self column text-start">
-            {/* <h4 className=''>
-              {t("selected")}:
-            </h4> */}
-            <ul>
-              <li>{t("duration")} {estimatedCycleDuration}</li>
-              <li>{t("date")} {startDate}</li>
-            </ul>
-          </div>
-        }
-      </div>
 
       <div className="flex-center w-90 mt-1">
         {showGraph &&

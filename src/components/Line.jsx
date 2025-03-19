@@ -1,7 +1,7 @@
 const Line = ({ topValues, bottomValues, position }) => {
-  console.log(topValues);
-  console.log(bottomValues);
-  console.log(position);
+  // console.log('topValues', topValues);
+  // console.log('bottomValues', bottomValues);
+  // console.log('position', position);
 
   return (
     <svg
@@ -120,12 +120,12 @@ const Line = ({ topValues, bottomValues, position }) => {
             style={{
               fontStyle: 'normal',
               fontWeight: 'normal',
-              fontSize: '3.5px',
+              fontSize: '2.25px',
               fill: '#ffffff',
               stroke: 'none',
               strokeWidth: 0.5
             }}
-            x={(index * 19.25)}
+            x={(index * 19)}
             y="11.50"
           >
             <tspan>{value}</tspan>
