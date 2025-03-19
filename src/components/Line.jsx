@@ -1,14 +1,18 @@
+import { useTranslation } from "react-i18next";
+
 const Line = ({ topValues, bottomValues, position }) => {
   // console.log('topValues', topValues);
   // console.log('bottomValues', bottomValues);
   // console.log('position', position);
 
+  const { t, i18n } = useTranslation();
+
   return (
     <svg
       width="480"
-      height="150"
+      height="140"
       viewBox="0 0 85 10"
-      style={{ backgroundColor: 'blue' }}
+      // style={{ backgroundColor: 'blue' }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <g>
@@ -118,16 +122,17 @@ const Line = ({ topValues, bottomValues, position }) => {
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.2em',
-            fill: '#909090',
+            fontSize: '0.16em',
+            fill: '#ffffff',
             stroke: 'none',
             strokeWidth: 0.5
           }}
-          x="80"
-          y="0.05"
+          x="0"
+          y="-4"
         >
-          <tspan>ciclo</tspan>
+          <tspan>{t("cycle")}</tspan>
         </text>
+
         {/* month values */}
         {bottomValues.map((value, index) => (
           <text
@@ -146,6 +151,20 @@ const Line = ({ topValues, bottomValues, position }) => {
             <tspan>{value}</tspan>
           </text>
         ))}
+        <text
+          style={{
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '0.16em',
+            fill: '#ffffff',
+            stroke: 'none',
+            strokeWidth: 0.5
+          }}
+          x="76"
+          y="16.75"
+        >
+          <tspan>{t("date")}</tspan>
+        </text>
 
       </g>
     </svg>
