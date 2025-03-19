@@ -1,3 +1,14 @@
 .text-pink {
   color: var(--color-pink);
 }
+.stroke-color {
+  stroke: var(--color-pink);
+  fill: white;
+
+  stroke-width: 0.25;
+}
+.fill-color {
+  fill: var(--color-pink);
+  stroke: white;
+  stroke-width: 0.25;
+}
