@@ -11,7 +11,7 @@ const Line = ({ topValues, bottomValues, position }) => {
   return (
     <svg
       width="480"
-      height="140"
+      height="150"
       viewBox="0 0 85 10"
       // style={{ backgroundColor: 'blue' }}
       xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ const Line = ({ topValues, bottomValues, position }) => {
           style={{
             fill: 'none',
             stroke: '#ffffff',
-            strokeWidth: 0.5,
+            strokeWidth: 1.5,
             strokeLinecap: 'butt',
             strokeLinejoin: 'miter',
             strokeMiterlimit: 4,
@@ -45,64 +45,19 @@ const Line = ({ topValues, bottomValues, position }) => {
           // d="M 1.0,5.3 H 80.0"
           d={`M 1.0,5.3 H ${position}.0`}
         />
+
         {/* color dots */}
-        <path
-          style={{
-            opacity: 1,
-            // fill: '#ff00c0',
-            fillOpacity: 1,
-            fillRule: 'evenodd',
-            // stroke: 'none',
-            // strokeWidth: 0.25
-          }}
-          className="fill-color"
-          d="m 2.7,5.2 a 1.3,1.3 0 0 1 -1.3,1.3 1.3,1.3 0 0 1 -1.3,-1.3 1.3,1.3 0 0 1 1.3,-1.3 1.3,1.3 0 0 1 1.3,1.3"
-        />
-        <path
-          style={{
-            opacity: 1,
-            fill: '#1ab51a',
-            fillOpacity: 0.75,
-            fillRule: 'evenodd',
-            stroke: 'none',
-            strokeWidth: 0
-          }}
-          d="m 22.17,5.2 a 1.0,1.0 0 0 1 -1.0,1.0 1.0,1.0 0 0 1 -1.0,-1.0 1.0,1.0 0 0 1 1.0,-1.0 1.0,1.0 0 0 1 1.0,1.0"
-        />
-        <path
-          style={{
-            opacity: 1,
-            fill: '#f6e731',
-            fillOpacity: 0.75,
-            fillRule: 'evenodd',
-            stroke: 'none',
-            strokeWidth: 0
-          }}
-          d="m 41.84,5.2 a 1.0,1.0 0 0 1 -1.0,1.0 1.0,1.0 0 0 1 -1.0,-1.0 1.0,1.0 0 0 1 1.0,-1.0 1.0,1.0 0 0 1 1.0,1.0"
-        />
-        <path
-          style={{
-            opacity: 0.85,
-            fill: '#ff5454',
-            fillOpacity: 0.85,
-            fillRule: 'evenodd',
-            stroke: 'none',
-            strokeWidth: 0
-          }}
-          d="m 61.51,5.2 a 1.0,1.0 0 0 1 -1.0,1.0 1.0,1.0 0 0 1 -1.0,-1.0 1.0,1.0 0 0 1 1.0,-1.0 1.0,1.0 0 0 1 1.0,1.0"
-        />
-        <path
-          style={{
-            opacity: 1,
-            // fill: '#ff00c0',
-            fillOpacity: 1,
-            fillRule: 'evenodd',
-            // stroke: 'none',
-            // strokeWidth: 0.25
-          }}
-          className="fill-color"
-          d="m 81.2,5.2 a 1.3,1.3 0 0 1 -1.3,1.3 1.3,1.3 0 0 1 -1.3,-1.3 1.3,1.3 0 0 1 1.3,-1.3 1.3,1.3 0 0 1 1.3,1.3"
-        />
+        {/* start */}
+        <circle cx="1.4" cy="5.2" r="1.3" className="fill-color" />
+        {/* green */}
+        <circle cx="21.05" cy="5.2" r="1.3" fill="rgba(26, 181, 26, 0.75)" />
+        {/* yellow */}
+        <circle cx="40.7" cy="5.2" r="1.3" fill="rgba(255, 238, 84, 0.85)" fillOpacity="0.75" />
+        {/* red */}
+        <circle cx="60.35" cy="5.2" r="1.3" fill="rgba(255, 84, 84, 0.85)" />
+        {/* end */}
+        <circle cx="80" cy="5.2" r="1.3" fill="white" />
+
         {/* color position */}
         <path // barra color
           style={{
@@ -115,7 +70,7 @@ const Line = ({ topValues, bottomValues, position }) => {
             strokeOpacity: 1
           }}
           className="stroke-color"
-          d={`M ${position},2.45 V 8.0`} // min: 1 max: 80
+          d={`M ${position},3.7 V 7.25`} // min: 1 max: 80
         />
 
         {/* cycle values */}
@@ -142,15 +97,15 @@ const Line = ({ topValues, bottomValues, position }) => {
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.16em',
-            fill: '#ffffff',
+            fontSize: '0.2em',
+            fill: '#7a7a7a',
             stroke: 'none',
             strokeWidth: 0.5
           }}
           x="0"
-          y="-4"
+          y="-3"
         >
-          <tspan>{t("cycle")}</tspan>
+          <tspan>{t("cycleDays")}</tspan>
         </text>
 
         {/* month values */}
@@ -160,13 +115,13 @@ const Line = ({ topValues, bottomValues, position }) => {
             style={{
               fontStyle: 'normal',
               fontWeight: 'normal',
-              fontSize: '0.16em',
+              fontSize: '0.15em',
               fill: '#ffffff',
               stroke: 'none',
               strokeWidth: 0.5
             }}
-            x={(index * 19)}
-            y="11.50"
+            x={(index * 18.65)}
+            y="11"
           >
             <tspan>{value}</tspan>
           </text>
@@ -177,83 +132,83 @@ const Line = ({ topValues, bottomValues, position }) => {
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.16em',
-            fill: '#ffffff',
+            fontSize: '0.2em',
+            fill: '#7a7a7a',
             stroke: 'none',
-            strokeWidth: 0.5
+            strokeWidth: 0.5,
           }}
-          x="77"
-          y="16.4"
+          x="0"
+          y="15.5"
         >
           <tspan>{t("date")}</tspan>
         </text>
 
         {/* 1 */}
-        <circle cx="10.75" cy="15.25" r="2" fill="transparent" stroke='white' strokeWidth='0.25' />
+        <circle cx="11.2" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
         <text
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.16em',
+            fontSize: '0.15em',
             fill: '#ffffff',
             stroke: 'none',
             strokeWidth: 0.5,
             border: '1px solid white',
             borderRadius: '50%'
           }}
-          x="10"
-          y="16.2"
+          x="10.5"
+          y="2.5"
         >
           <tspan>{1}</tspan>
         </text>
 
         {/* 2 */}
-        <circle cx="30.8" cy="15.25" r="2" fill="transparent" stroke='white' strokeWidth='0.25' />
+        <circle cx="30.8" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
         <text
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.16em',
+            fontSize: '0.15em',
             fill: '#ffffff',
             stroke: 'none',
             strokeWidth: 0.5
           }}
           x="30"
-          y="16.2"
+          y="2.5"
         >
           <tspan>{2}</tspan>
         </text>
 
         {/* 3 */}
-        <circle cx="50.9" cy="15.25" r="2" fill="transparent" stroke='white' strokeWidth='0.25' />
+        <circle cx="50.85" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
         <text
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.16em',
+            fontSize: '0.15em',
             fill: '#ffffff',
             stroke: 'none',
             strokeWidth: 0.5
           }}
           x="50"
-          y="16.2"
+          y="2.5"
         >
           <tspan>{3}</tspan>
         </text>
 
         {/* 4 */}
-        <circle cx="70.9" cy="15.25" r="2" fill="transparent" stroke='white' strokeWidth='0.25' />
+        <circle cx="70.9" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
         <text
           style={{
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '0.16em',
+            fontSize: '0.15em',
             fill: '#ffffff',
             stroke: 'none',
             strokeWidth: 0.5
           }}
           x="70"
-          y="16.2"
+          y="2.5"
         >
           <tspan>{4}</tspan>
         </text>

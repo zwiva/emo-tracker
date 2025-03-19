@@ -10,7 +10,7 @@
   "selected": "Selected",
   "duration": "Duration",
   "date": "Date",
-  "cycle": "Cycle",
+  "cycleDays": "Cycle days",
   "msgFirstPart": "Approximately every",
   "msgSecondPart": "days, your mood may change"
 }

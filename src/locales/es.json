@@ -10,7 +10,7 @@
   "selected": "Seleccionado",
   "duration": "Duración",
   "date": "Fecha",
-  "cycle": "Ciclo",
+  "cycleDays": "Días del ciclo",
   "msgFirstPart": "Aproximadamente cada",
   "msgSecondPart": "días tu animo puede cambiar"
 }

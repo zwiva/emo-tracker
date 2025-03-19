@@ -4,7 +4,6 @@
 .stroke-color {
   stroke: var(--color-pink);
   fill: white;
-
   stroke-width: 0.25;
 }
 .fill-color {
