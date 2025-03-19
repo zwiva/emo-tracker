@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 const Line = ({ topValues, bottomValues, position }) => {
   // console.log('topValues', topValues);
   // console.log('bottomValues', bottomValues);
-  // console.log('position', position);
+  console.log('position', position);
 
   const { t, i18n } = useTranslation();
   const colorPink = getComputedStyle(document.documentElement).getPropertyValue('--color-pink').trim();
@@ -48,13 +48,13 @@ const Line = ({ topValues, bottomValues, position }) => {
 
         {/* color dots */}
         {/* start */}
-        <circle cx="1.4" cy="5.2" r="1.3" className="fill-color" />
+        <circle cx="1.5" cy="5.2" r="1.3" className="fill-color" />
         {/* green */}
-        <circle cx="21.05" cy="5.2" r="1.3" fill="rgba(26, 181, 26, 0.75)" />
+        <circle cx="20" cy="5.2" r="1.5" fill="rgba(26, 181, 26, 0.75)" />
         {/* yellow */}
-        <circle cx="40.7" cy="5.2" r="1.3" fill="rgba(255, 238, 84, 0.85)" fillOpacity="0.75" />
+        <circle cx="40" cy="5.2" r="1.5" fill="rgba(255, 238, 84, 0.85)" fillOpacity="0.75" />
         {/* red */}
-        <circle cx="60.35" cy="5.2" r="1.3" fill="rgba(255, 84, 84, 0.85)" />
+        <circle cx="60" cy="5.2" r="1.5" fill="rgba(255, 84, 84, 0.85)" />
         {/* end */}
         <circle cx="80" cy="5.2" r="1.3" fill="white" />
 
@@ -143,8 +143,59 @@ const Line = ({ topValues, bottomValues, position }) => {
           <tspan>{t("date")}</tspan>
         </text>
 
+        {/* 4 */}
+        <circle cx="70.9" cy="1.75" r="1.5" fill={position > 60 ? colorPink : 'transparent'} stroke='white' strokeWidth='0.15' />
+        <text
+          style={{
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '0.15em',
+            fill: '#ffffff',
+            stroke: 'none',
+            strokeWidth: 0.5
+          }}
+          x="70"
+          y="2.5"
+        >
+          <tspan>{4}</tspan>
+        </text>
+
+        {/* 3 */}
+        <circle cx="50.85" cy="1.75" r="1.5" fill={position > 40 ? colorPink : 'transparent'} stroke='white' strokeWidth='0.15' />
+        <text
+          style={{
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '0.15em',
+            fill: '#ffffff',
+            stroke: 'none',
+            strokeWidth: 0.5
+          }}
+          x="50"
+          y="2.5"
+        >
+          <tspan>{3}</tspan>
+        </text>
+
+        {/* 2 */}
+        <circle cx="30.8" cy="1.75" r="1.5" fill={position > 20 ? colorPink : 'transparent'} stroke='white' strokeWidth='0.15' />
+        <text
+          style={{
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '0.15em',
+            fill: '#ffffff',
+            stroke: 'none',
+            strokeWidth: 0.5
+          }}
+          x="30"
+          y="2.5"
+        >
+          <tspan>{2}</tspan>
+        </text>
+
         {/* 1 */}
-        <circle cx="11.2" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
+        <circle cx="11.2" cy="1.75" r="1.5" fill={position > 1 ? colorPink : 'transparent'} stroke='white' strokeWidth='0.15' />
         <text
           style={{
             fontStyle: 'normal',
@@ -162,56 +213,6 @@ const Line = ({ topValues, bottomValues, position }) => {
           <tspan>{1}</tspan>
         </text>
 
-        {/* 2 */}
-        <circle cx="30.8" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
-        <text
-          style={{
-            fontStyle: 'normal',
-            fontWeight: 'normal',
-            fontSize: '0.15em',
-            fill: '#ffffff',
-            stroke: 'none',
-            strokeWidth: 0.5
-          }}
-          x="30"
-          y="2.5"
-        >
-          <tspan>{2}</tspan>
-        </text>
-
-        {/* 3 */}
-        <circle cx="50.85" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
-        <text
-          style={{
-            fontStyle: 'normal',
-            fontWeight: 'normal',
-            fontSize: '0.15em',
-            fill: '#ffffff',
-            stroke: 'none',
-            strokeWidth: 0.5
-          }}
-          x="50"
-          y="2.5"
-        >
-          <tspan>{3}</tspan>
-        </text>
-
-        {/* 4 */}
-        <circle cx="70.9" cy="1.75" r="1.5" fill="transparent" stroke='white' strokeWidth='0.15' />
-        <text
-          style={{
-            fontStyle: 'normal',
-            fontWeight: 'normal',
-            fontSize: '0.15em',
-            fill: '#ffffff',
-            stroke: 'none',
-            strokeWidth: 0.5
-          }}
-          x="70"
-          y="2.5"
-        >
-          <tspan>{4}</tspan>
-        </text>
       </g>
     </svg>
   );

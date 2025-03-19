@@ -80,17 +80,10 @@ const Home = ({ today, todayFull }) => {
     const startDay = new Date(startDate);
     const diffMs = thisDay.getTime() - startDay.getTime();
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    const pos = (diffDays * 80) / estimatedCycleDuration
-    // console.log('pos', pos); // entre 1 y 80
-    setPosition(pos + 1) // min: 1 max: 80 (sacar proporcion)
+    const pos = (diffDays * 80) / estimatedCycleDuration; // entre 1 y 80
+    // console.log('pos', pos); 
+    pos < 19 ? setPosition(pos + 1) : setPosition(pos);
   }
-
-  // const drawGraph = () => {
-  //   const quarter = drawTopSection()
-  //   drawBottomSection(quarter)
-  //   drawToday()
-  //   setShowGraph(true)
-  // }
 
   const drawGraph = useCallback(() => {
     const quarter = drawTopSection();
