@@ -9,5 +9,7 @@
   "missingData": "Ingrese datos válidos.",
   "selected": "Seleccionado",
   "duration": "Duración",
-  "date": "Fecha"
+  "date": "Fecha",
+  "msgFirstPart": "Aproximadamente cada",
+  "msgSecondPart": "días tu animo puede cambiar"
 }

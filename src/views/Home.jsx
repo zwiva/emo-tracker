@@ -20,6 +20,8 @@ const Home = ({ today, todayFull }) => {
   const [lastCycleYear, setLastCycleYear] = useState('')
 
   const [showGraph, setShowGraph] = useState(false)
+
+  const [quarter, setQuarter] = useState('');
   const [topValues, setTopValues] = useState([])
   const [bottomValues, setBottomValues] = useState([])
   const [position, setPosition] = useState(0)
@@ -32,12 +34,13 @@ const Home = ({ today, todayFull }) => {
   }, [today]);
 
   const drawTopSection = () => {
-    const quarter = estimatedCycleDuration / 4
-    const frs = quarter
-    const sec = quarter * 2
-    const thr = quarter * 3
-    setTopValues([0, frs, sec, thr, Number(estimatedCycleDuration)]) // dias del ciclo
-    return quarter
+    const quarter = estimatedCycleDuration / 4;
+    setQuarter(quarter);
+    const frs = quarter;
+    const sec = quarter * 2;
+    const thr = quarter * 3;
+    setTopValues([0, frs, sec, thr, Number(estimatedCycleDuration)]); // dias del ciclo
+    return quarter;
   }
 
   const drawBottomSection = (quarter) => {
@@ -152,9 +155,19 @@ const Home = ({ today, todayFull }) => {
             <p>{t("check")}</p>
           </span>
         </button>
-      </div >
+      </div>
 
-      <div className="flex-center w-90 mt-1">
+      <div className="flex-center w-90">
+        {showGraph &&
+          <p>{t("msgFirstPart")} 
+            <span className='mx-05 text-pink' style={{ fontWeight: 'bold' }}>
+               {quarter} 
+            </span> 
+            {t("msgSecondPart")}.</p>
+        }
+      </div>
+
+      <div className="flex-center w-90">
         {showGraph &&
           <Line topValues={topValues} bottomValues={bottomValues} position={position} />
         }

@@ -9,5 +9,7 @@
   "missingData": "Insert valid data.",
   "selected": "Selected",
   "duration": "Duration",
-  "date": "Date"
+  "date": "Date",
+  "msgFirstPart": "Approximately every",
+  "msgSecondPart": "days, your mood may change"
 }

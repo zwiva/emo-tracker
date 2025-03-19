@@ -7,7 +7,8 @@ const Line = ({ topValues, bottomValues, position }) => {
     <svg
       width="480"
       height="150"
-      viewBox="0 0 85 5"
+      viewBox="0 0 85 10"
+      style={{ backgroundColor: 'blue' }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <g>
@@ -101,7 +102,7 @@ const Line = ({ topValues, bottomValues, position }) => {
             style={{
               fontStyle: 'normal',
               fontWeight: 'normal',
-              fontSize: '3.5px',
+              fontSize: '0.2em',
               fill: '#909090',
               stroke: 'none',
               strokeWidth: 0.5
@@ -113,6 +114,20 @@ const Line = ({ topValues, bottomValues, position }) => {
           </text>
         ))}
 
+        <text
+          style={{
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '0.2em',
+            fill: '#909090',
+            stroke: 'none',
+            strokeWidth: 0.5
+          }}
+          x="80"
+          y="0.05"
+        >
+          <tspan>ciclo</tspan>
+        </text>
         {/* month values */}
         {bottomValues.map((value, index) => (
           <text
@@ -120,7 +135,7 @@ const Line = ({ topValues, bottomValues, position }) => {
             style={{
               fontStyle: 'normal',
               fontWeight: 'normal',
-              fontSize: '2.25px',
+              fontSize: '0.16em',
               fill: '#ffffff',
               stroke: 'none',
               strokeWidth: 0.5
