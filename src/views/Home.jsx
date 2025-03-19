@@ -76,13 +76,13 @@ const Home = ({ today, todayFull }) => {
   }
 
   const drawToday = () => {
-    console.log('----------------hoy---------------');
-    console.log('startDate', startDate);
-
-    const pos = lastCycleDay
-    const posFinal = lastCycleDay + 10
-
-    setPosition(posFinal) // min: 1 max: 80 (sacar proporcion)
+    const thisDay = new Date();
+    const startDay = new Date(startDate);
+    const diffMs = thisDay.getTime() - startDay.getTime();
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const pos = (diffDays * 80) / estimatedCycleDuration
+    // console.log('pos', pos); // entre 1 y 80
+    setPosition(pos + 1) // min: 1 max: 80 (sacar proporcion)
   }
 
   // const drawGraph = () => {
@@ -159,10 +159,10 @@ const Home = ({ today, todayFull }) => {
 
       <div className="flex-center w-90">
         {showGraph &&
-          <p>{t("msgFirstPart")} 
+          <p>{t("msgFirstPart")}
             <span className='mx-05 text-pink' style={{ fontWeight: 'bold' }}>
-               {quarter} 
-            </span> 
+              {quarter}
+            </span>
             {t("msgSecondPart")}.</p>
         }
       </div>
