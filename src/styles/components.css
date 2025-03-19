@@ -10,6 +10,7 @@
 .input {
   width: 10em;
   text-align: center;
+  line-height: 1.5;
 }
 
 .form__body {
@@ -17,7 +18,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   gap: 0.5em;
 }
 
