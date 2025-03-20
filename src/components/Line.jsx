@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 const Line = ({ topValues, bottomValues, position }) => {
   // console.log('topValues', topValues);
   // console.log('bottomValues', bottomValues);
-  console.log('position', position);
+  // console.log('position', position);
 
   const { t, i18n } = useTranslation();
   const colorPink = getComputedStyle(document.documentElement).getPropertyValue('--color-pink').trim();

@@ -1,13 +1,31 @@
 .text-pink {
   color: var(--color-pink);
 }
+
+.bg-pink {
+  background-color: var(--color-pink);
+}
+
+.bg-gray-1 {
+  background-color: rgb(149, 149, 149);
+}
+
+.bg-gray-2 {
+  background-color: rgb(69, 69, 69);
+}
+
 .stroke-color {
   stroke: var(--color-pink);
   fill: white;
   stroke-width: 0.25;
 }
+
 .fill-color {
   fill: var(--color-pink);
   stroke: white;
   stroke-width: 0.25;
+}
+
+.text-gray {
+  color: rgb(161, 161, 161);
 }

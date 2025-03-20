@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Bar from '../components/Bar';
 import Line from '../components/Line';
 import { useTranslation } from 'react-i18next';
+import TabSection from '../components/TabSection';
 
 const Home = ({ today, todayFull }) => {
   // console.log('--- START VIEW ---', todayFull);
@@ -165,8 +166,13 @@ const Home = ({ today, todayFull }) => {
           <Line topValues={topValues} bottomValues={bottomValues} position={position} />
         }
       </div>
-    </>
 
+      <div>
+        {showGraph &&
+          <TabSection></TabSection>
+        }
+      </div>
+    </>
   )
 
 }
